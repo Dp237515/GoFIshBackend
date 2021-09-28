@@ -1,0 +1,19 @@
+{
+  "name": "gofishbackend",
+  "version": "1.0.0",
+  "description": "The backend for a distributed Go Fish Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dp237515/GoFIshBackend.git"
+  },
+  "author": "Duncan Price, Kevin Meuer, Regis Ober",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dp237515/GoFIshBackend/issues"
+  },
+  "homepage": "https://github.com/Dp237515/GoFIshBackend#readme"
+}
