@@ -8,6 +8,7 @@ require('dotenv').config();
 
 //importing all of the controllers
 const cardRoutes = require("./controllers/cardController");
+const playerRoutes = require("./controllers/playerController");
 
 //error with database connection
 mongoose.connection.on("error", err =>
@@ -16,7 +17,6 @@ mongoose.connection.on("error", err =>
 
 //disconnected from database
 mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
-mongoose.set("useFindAndModify", false);
 
 // Fix depreciation warnings
 mongoose.set("useFindAndModify", false);
@@ -33,13 +33,14 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true }).then(() => {
   app.use(bodyParser.urlencoded({ extended: true}));
   
   //tell the app to use all of the routes and specify the paths
-  app.use("/api/card", cardRoutes)
+  app.use("/card", cardRoutes)
+  app.use("/player", playerRoutes)
   
   mongoose.connection.once("open", () => {
     console.log("connected to mongoose...");
   });
   
-  // listening to port
+  //listening to port
   app.listen(PORT, () => {
     console.log("Listening on port: ", PORT);
   });

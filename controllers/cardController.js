@@ -54,4 +54,21 @@ card.delete("/delete/:id", cors(corsOptions), (req, res) => {
     });
 });
 
+//update card img
+card.put("/updateImg/:id", cors(corsOptions), async (req, res) => {
+    await Card.findByIdAndUpdate(req.params.id, { img: req.body.img }, (err, p) => {
+      if (!p) {
+          return next(new Error('DNE'));
+      } else {
+          p.save((err) => {
+              if (err) {
+                res.status(400).json({ error: error.message});
+              } else {
+                res.send(p);
+              }
+          });
+      }
+    });
+  });
+
 module.exports = card;
