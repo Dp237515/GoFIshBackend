@@ -72,10 +72,10 @@ game.put("/updateName/:id", cors(corsOptions), async (req, res) => {
 });
 
 //adds a new player to the players array of the game
-player.put("/addPlayer/:id", cors(corsOptions), async (req, res) => {
+game.put("/addPlayer/:id", cors(corsOptions), async (req, res) => {
     const player = req.body.card
     console.log(player)
-    Card.updateOne({id: req.params.id}, {$push: { cards: player}}, (err, data) => {
+    Game.updateOne({id: req.params.id}, {$push: { cards: player}}, (err, data) => {
       if (err) {
           console.log(err)
       } else {
