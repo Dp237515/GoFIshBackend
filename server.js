@@ -9,6 +9,7 @@ require('dotenv').config();
 //importing all of the controllers
 const cardRoutes = require("./controllers/cardController");
 const playerRoutes = require("./controllers/playerController");
+const gameRoutes = require("./controllers/gameController");
 
 //error with database connection
 mongoose.connection.on("error", err =>
@@ -35,6 +36,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true }).then(() => {
   //tell the app to use all of the routes and specify the paths
   app.use("/card", cardRoutes)
   app.use("/player", playerRoutes)
+  app.use("/game", gameRoutes)
   
   mongoose.connection.once("open", () => {
     console.log("connected to mongoose...");
