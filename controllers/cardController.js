@@ -20,6 +20,7 @@ card.post("/create", cors(corsOptions), (req, res) => {
 
 //get all cards
 card.get("/findAll", cors(corsOptions), async (req, res) => {
+    console.log("was hit")
     Card.find().then(data => {
         res.send(data);
     })
