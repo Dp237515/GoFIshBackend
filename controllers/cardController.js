@@ -4,7 +4,8 @@ const Card = require("../models/card");
 const cors = require("cors");
 
 var corsOptions = {
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000',
+    mehtods: "GET,PUT,POST,DELETE"
 };
 
 //create a new card
