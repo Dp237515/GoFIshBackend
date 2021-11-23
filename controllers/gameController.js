@@ -1,6 +1,6 @@
 const express = require("express");
 const game = express.Router();
-const Game = require("../models/player");
+const Game = require("../models/game");
 const cors = require("cors");
 
 var corsOptions = {
