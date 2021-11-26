@@ -42,7 +42,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true }).then(() => {
   mongoose.connection.once("open", () => {
     console.log("connected to mongoose...");
   });
-  
+
   //listening to port
   app.listen(PORT, () => {
     console.log("Listening on port: ", PORT);
