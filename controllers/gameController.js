@@ -75,10 +75,28 @@ game.put("/updateName/:id", cors(corsOptions), async (req, res) => {
 //adds a new player to the players array of the game
 game.put("/addPlayer/:gameId", cors(corsOptions), async (req, res) => {
     try{
-        console.log("Game ID is: " + req.params.gameId)
-        console.log("New player ID is: " + req.body.playerId)
-
         Game.findByIdAndUpdate(req.params.gameId, { players: req.body.playerId}, (err, p) => {
+            if(!p){
+                return next(new Error('DNE'))
+            } else {
+                p.save((err) => {
+                    if (err) {
+                        res.status(400).json({ error: error.message});
+                    } else {
+                        res.send(p);
+                    }
+                })
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }    
+});
+
+//changes which player's turn it is 
+game.put("/changeTurn/:gameId", cors(corsOptions), async (req, res) => {
+    try{
+        Game.findByIdAndUpdate(req.params.gameId, { turn: req.body.playerName}, (err, p) => {
             if(!p){
                 return next(new Error('DNE'))
             } else {

@@ -72,17 +72,25 @@ player.put("/updateName/:id", cors(corsOptions), async (req, res) => {
     });
 });
 
-//adds a new card to the card array of the player
-player.put("/addCard/:id", cors(corsOptions), async (req, res) => {
-    const card = req.body.card
-    console.log(card)
-    Card.updateOne({id: req.params.id}, {$push: { cards: card}}, (err, data) => {
-      if (err) {
-          console.log(err)
-      } else {
-        res.send(data);
-      }
-    });
+//adds a new card to the cards array of the player
+player.put("/addCard/:gameId", cors(corsOptions), async (req, res) => {
+    try{
+        Player.findByIdAndUpdate(req.params.gameId, { cards: req.body.card}, (err, p) => {
+            if(!p){
+                return next(new Error('DNE'))
+            } else {
+                p.save((err) => {
+                    if (err) {
+                        res.status(400).json({ error: error.message});
+                    } else {
+                        res.send(p);
+                    }
+                })
+            }
+        })
+    } catch (err) {
+        console.log(err)
+    }    
 });
 
 module.exports = player;

@@ -9,7 +9,9 @@ var gameSchema = new mongoose.Schema({
     //what the playerlist for the game is
 	playerCount: { type: Number, default: 0, required: false },
     //if someone has won the game
-	condition: { type: Boolean, default: false, required: false }
+	condition: { type: Boolean, default: false, required: false },
+    //keeps track of which player's turn it is
+    turn: { type: String, default:"", required: false }
 });
 
 module.exports = new mongoose.model('Game', gameSchema);
