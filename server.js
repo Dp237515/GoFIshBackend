@@ -23,7 +23,7 @@ mongoose.connection.on("disconnected", () => console.log("mongo disconnected"));
 mongoose.set("useFindAndModify", false);
 mongoose.set("useUnifiedTopology", true);
 
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 3000;
 const mongodbURI = process.env.mongodbURI;
 
 // Database connection
