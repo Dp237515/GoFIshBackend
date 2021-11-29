@@ -4,7 +4,7 @@ const Game = require("../models/game");
 const cors = require("cors");
 
 var corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'http://192.168.1.138:3000',
     mehtods: "GET,PUT,POST,DELETE",
 };
 
