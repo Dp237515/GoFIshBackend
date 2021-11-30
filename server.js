@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express()
-require('dotenv').config();
+require('dotenv').config(); 
 
 //importing all of the controllers
 const cardRoutes = require("./controllers/cardController");
