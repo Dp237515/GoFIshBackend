@@ -4,7 +4,7 @@ const Game = require("../models/game");
 const cors = require("cors");
 
 var corsOptions = {
-    origin: 'http://192.168.1.138:3000',
+    origin: 'http://172.24.160.144:3000',
     mehtods: "GET,PUT,POST,DELETE",
 };
 
@@ -95,8 +95,9 @@ game.put("/addPlayer/:gameId", cors(corsOptions), async (req, res) => {
 
 //changes which player's turn it is 
 game.put("/changeTurn/:gameId", cors(corsOptions), async (req, res) => {
+    console.log(req.body.playerNum)
     try{
-        Game.findByIdAndUpdate(req.params.gameId, { turn: req.body.playerName}, (err, p) => {
+        Game.findByIdAndUpdate(req.params.gameId, { turnNum: req.body.playerNum}, (err, p) => {
             if(!p){
                 return next(new Error('DNE'))
             } else {
@@ -111,7 +112,7 @@ game.put("/changeTurn/:gameId", cors(corsOptions), async (req, res) => {
         })
     } catch (err) {
         console.log(err)
-    }    
+    }     
 });
 
 //adds 1 to the player count

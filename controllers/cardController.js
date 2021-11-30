@@ -2,9 +2,10 @@ const express = require("express");
 const card = express.Router();
 const Card = require("../models/card");
 const cors = require("cors");
+require('dotenv').config();
 
 var corsOptions = {
-    origin: 'http://192.168.1.138:3000',
+    origin: 'http://172.24.160.144:3000',
     mehtods: "GET,PUT,POST,DELETE"
 };
 
@@ -70,6 +71,6 @@ card.put("/updateImg/:id", cors(corsOptions), async (req, res) => {
           });
       }
     });
-  });
+});
 
 module.exports = card;

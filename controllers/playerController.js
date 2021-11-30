@@ -4,7 +4,7 @@ const Player = require("../models/player");
 const cors = require("cors");
 
 var corsOptions = {
-    origin: 'http://192.168.1.138:3000',
+    origin: 'http://172.24.160.144:3000',
     mehtods: "GET,PUT,POST,DELETE",
 };
 
@@ -73,9 +73,12 @@ player.put("/updateName/:id", cors(corsOptions), async (req, res) => {
 });
 
 //adds a new card to the cards array of the player
-player.put("/addCard/:gameId", cors(corsOptions), async (req, res) => {
+player.put("/addCard/:id", cors(corsOptions), async (req, res) => {
     try{
-        Player.findByIdAndUpdate(req.params.gameId, { cards: req.body.card}, (err, p) => {
+        Player.findByIdAndUpdate(req.params.id, { cards: req.body.cardID}, (err, p) => {
+            if(err){
+                console.log(err)
+            }
             if(!p){
                 return next(new Error('DNE'))
             } else {
@@ -90,7 +93,7 @@ player.put("/addCard/:gameId", cors(corsOptions), async (req, res) => {
         })
     } catch (err) {
         console.log(err)
-    }    
+    }       
 });
 
 module.exports = player;
