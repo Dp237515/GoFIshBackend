@@ -11,7 +11,7 @@ var gameSchema = new mongoose.Schema({
     //if someone has won the game
 	condition: { type: Boolean, default: false, required: false },
     //keeps track of which player's turn it is
-    turn: { type: String, default:"", required: false }
+    turnNum: { type: Number, default: 0, required: false }
 });
 
 module.exports = new mongoose.model('Game', gameSchema);
