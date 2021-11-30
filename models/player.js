@@ -5,7 +5,7 @@ var playerSchema = new mongoose.Schema({
 	//what the name of the player is
 	name: { type: String, default: "Unnamed Player", required: false },
 	//what cards the player has
-    cards: [Number],
+    cards: [String],
 	//what the player is doing
 	action: { type: String, default: "Waiting", required: false },
 	//how many cards the player has in their hand
